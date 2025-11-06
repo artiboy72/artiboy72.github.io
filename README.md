@@ -72,4 +72,13 @@ Description of the project, your role, and the impact or outcome.
 
 📱 Phone: +123 456 7890
 
-[https://www.youtube.com/watch?v=uv1szU7R1wY](https://www.youtube.com/watch?v=uv1szU7R1wY)
+---
+
+# 🎥 Demo Reel
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/uv1szU7R1wY"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
