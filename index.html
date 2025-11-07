@@ -497,7 +497,114 @@
             padding: 0;
         }
 
-        .modal-features li {
+                .modal-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Skills & Tools Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1f2e 0%, #2d3440 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(230, 0, 18, 0.3);
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+            border: 3px solid #e60012;
+            animation: popupFadeIn 0.3s ease-out, glowPulse 2s infinite;
+            overflow-y: auto;
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* Internet Explorer and Edge */
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(230, 0, 18, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .popup::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for modal content */
+        .modal-content {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .popup-content {
+            color: #ccd6f6;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .popup-close:hover {
+            background: #e60012;
+            transform: rotate(90deg);
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .popup.active,
+        .popup-overlay.active {
+            display: block;
+        }
             padding: 10px 0;
             padding-left: 30px;
             position: relative;
@@ -678,27 +785,27 @@
                 <span>Skills & Tools</span>
             </div>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Expert in Unity Engine development with extensive experience in creating high-performance games. Proficient in Unity\'s latest features, scripting, and optimization techniques.')">
                     <div class="skill-icon">🎮</div>
                     <div class="skill-name">Unity Engine</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Skilled in game design principles including level design, player engagement, game mechanics, and balancing. Experience in creating compelling player experiences.')">
                     <div class="skill-icon">🎨</div>
                     <div class="skill-name">Game Design</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Advanced C# programming skills with focus on game development. Experience in optimizing code performance, design patterns, and best practices.')">
                     <div class="skill-icon">💻</div>
                     <div class="skill-name">C# Programming</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Proficient in Unreal Engine development, including Blueprint visual scripting and C++ programming. Experience with UE5\'s latest features.')">
                     <div class="skill-icon">🔧</div>
                     <div class="skill-name">Unreal Engine</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Specialized in mobile game development with expertise in touch controls, performance optimization, and cross-platform compatibility.')">
                     <div class="skill-icon">📱</div>
                     <div class="skill-name">Mobile Dev</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" onclick="showPopup(this, 'Experience in game audio design including sound effects, music integration, and spatial audio implementation using various audio middleware.')">
                     <div class="skill-icon">🎵</div>
                     <div class="skill-name">Audio Design</div>
                 </div>
@@ -885,6 +992,54 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
+            }
+        });
+
+        // Skills & Tools popup functions
+        function showPopup(element, description) {
+            const skillIcon = element.querySelector('.skill-icon').textContent;
+            const skillName = element.querySelector('.skill-name').textContent;
+            
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerHTML = `
+                <button class="popup-close" onclick="closePopup()">&times;</button>
+                <div style="font-size: 48px; margin-bottom: 15px; text-align: center;">${skillIcon}</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 10px; background: linear-gradient(90deg, #e60012, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center;">${skillName}</div>
+                <div class="popup-content">${description}</div>
+            `;
+
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            overlay.onclick = closePopup;
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                overlay.classList.add('active');
+                popup.classList.add('active');
+            }, 10);
+        }
+
+        function closePopup() {
+            const popup = document.querySelector('.popup');
+            const overlay = document.querySelector('.popup-overlay');
+            
+            if (popup && overlay) {
+                popup.classList.remove('active');
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    popup.remove();
+                    overlay.remove();
+                }, 300);
+            }
+        }
+
+        // Close popup with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePopup();
             }
         });
 
