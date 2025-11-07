@@ -99,6 +99,11 @@
             gap: 10px;
         }
 
+        /* Modifier to nudge a section title down slightly */
+        .section-title--mt {
+            margin-top: 20px; /* adjust this value to move it more/less */
+        }
+
         .section-title::before {
             content: '';
             width: 4px;
@@ -210,6 +215,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
 
         .featured-content p {
             line-height: 1.8;
@@ -708,8 +714,8 @@
             <div class="game-card" onclick="openModal('game1')">
                 <div class="game-image">🎮</div>
                 <div class="game-info">
-                    <div class="game-title">Space Adventure</div>
-                    <div class="game-role">Lead Developer | Unity</div>
+                    <div class="game-title">Egg VR </div>
+                    <div class="game-role">Product Specialist / Composer / Sound Designer | Unity</div>
                 </div>
             </div>
 
@@ -735,8 +741,8 @@
             <div class="game-card" onclick="openModal('game4')">
                 <div class="game-image">🧙</div>
                 <div class="game-info">
-                    <div class="game-title">Mystic Realm</div>
-                    <div class="game-role">Technical Artist | Unity</div>
+                    <div class="game-title">Tiny Planets</div>
+                    <div class="game-role">Composer/Sound Designer | Unity</div>
                 </div>
             </div>
 
@@ -744,8 +750,8 @@
             <div class="game-card" onclick="openModal('game5')">
                 <div class="game-image">⚔️</div>
                 <div class="game-info">
-                    <div class="game-title">Battle Legends</div>
-                    <div class="game-role">Lead Programmer</div>
+                    <div class="game-title">Space Rivals</div>
+                    <div class="game-role">Community Manager / Sound Designer</div>
                 </div>
             </div>
 
@@ -760,10 +766,13 @@
         </div>
 
         <!-- Featured Project -->
+        <div class="section-title section-title--mt">
+            <span>Currently Working On</span>
+        </div>
         <div class="featured-section">
             <div class="featured-image">🎯</div>
             <div class="featured-content">
-                <h2>Featured Project</h2>
+                <h2>MINER MAN</h2>
                 <p>
                     A passionate game developer with 5+ years of experience creating immersive gaming experiences. 
                     Specialized in Unity and Unreal Engine, I've worked on multiple successful titles across PC, 
@@ -865,8 +874,8 @@
         const gameData = {
             game1: {
                 icon: '🎮',
-                title: 'Space Adventure',
-                subtitle: 'Lead Developer | Unity',
+                title: 'Egg VR',
+                subtitle: 'Game Designer | Unity',
                 description: 'An epic space exploration game where players navigate through vast galaxies, discover new planets, and engage in thrilling space battles. Built with Unity and featuring stunning 3D graphics and immersive gameplay mechanics.',
                 tags: ['Unity', 'C#', '3D Graphics', 'Physics', 'Multiplayer', 'VFX'],
                 features: [
