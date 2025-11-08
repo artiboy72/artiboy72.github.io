@@ -209,26 +209,42 @@
         }
 
         .game-image img.logo--tinyplanets {
-            transform: translate(0px, 0px) scale(0.85);
+            transform: translate(3px, 0px) scale(1);
         }
 
         .game-image img.logo--tinyplanets:hover {
-            transform: translate(0px, 0px) scale(0.9);
+            transform: translate(3px, 0px) scale(1.1);
         }
 
         .game-image img.logo--eggvr:hover {
             /* Keep the same position (translate) but increase scale slightly */
-            transform: translate(0px, 0px) scale(0.75);
+            transform: translate(0px, 0px) scale(1.1);
         }
 
         .game-image img.logo--animalblocks {
             /* Example with a slight adjustment: moved 10px right and 5px up */
-            transform: translate(10px, 12px) scale(1.1);
+            transform: translate(9px, 12px) scale(1.1);
         }
 
         .game-image img.logo--animalblocks:hover {
             /* Keep the same position but increase scale slightly */
-            transform: translate(10px, -5px) scale(0.95);
+            transform: translate(9px, 12px) scale(1.15);
+        }
+
+        .game-image img.logo--spaceRivals {
+            transform: translate(0px, 0px) scale(0.8);
+        }
+
+        .game-image img.logo--spaceRivals:hover {
+            transform: translate(0px, 0px) scale(0.9);
+        }
+
+        .game-image img.logo--minerMan {
+            transform: translate(0px, 0px) scale(1);
+        }
+
+        .game-image img.logo--minerMan:hover {
+            transform: translate(0px, 0px) scale(1.2);
         }
 
         .game-info {
@@ -272,6 +288,15 @@
             border-radius: 12px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-image img.featured-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
             justify-content: center;
             font-size: 72px;
         }
@@ -758,8 +783,8 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="user-info">
-            <div class="user-avatar">GD</div>
-            <div class="user-name">Game Developer</div>
+            <div class="user-avatar">CJ</div>
+            <div class="user-name">Cem Jamal Aksu</div>
         </div>
         <div class="system-icons">
             <div class="time" id="current-time">12:00</div>
@@ -821,7 +846,7 @@
 
             <!-- Game Card 5 -->
             <div class="game-card" onclick="openModal('game5')">
-                <div class="game-image">⚔️</div>
+                <div class="game-image"><img src="Images/Space Rivals 3.svg" alt="Space Rivals Logo" class="logo--spaceRivals"></div>
                 <div class="game-info">
                     <div class="game-title">Space Rivals</div>
                     <div class="game-role">Community Manager / Sound Designer</div>
@@ -830,10 +855,10 @@
 
             <!-- Game Card 6 -->
             <div class="game-card" onclick="openModal('game6')">
-                <div class="game-image">🌊</div>
+                <div class="game-image"><img src="Images/Miner Man_Library Logo_Final.png" alt="Miner Man Logo" class="logo--minerMan"></div>
                 <div class="game-info">
-                    <div class="game-title">Ocean Explorer</div>
-                    <div class="game-role">Game Developer | Unity</div>
+                    <div class="game-title">MINER MAN</div>
+                    <div class="game-role">Composer / Sound Designer</div>
                 </div>
             </div>
         </div>
@@ -843,7 +868,7 @@
             <span>Currently Working On</span>
         </div>
         <div class="featured-section">
-            <div class="featured-image">🎯</div>
+            <div class="featured-image"><img src="Images/Miner Man_Main Capsule_Final.png" alt="Miner Man Main Capsule" class="featured-img"></div>
             <div class="featured-content">
                 <h2>MINER MAN</h2>
                 <p>
