@@ -92,7 +92,7 @@
         .section-title {
             font-size: 24px;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 20px;  /* reduced from 30px for more compact spacing */
             padding-left: 10px;
             display: flex;
             align-items: center;
@@ -154,12 +154,81 @@
         .game-image {
             width: 100%;
             height: 280px;
-            object-fit: cover;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
+            overflow: hidden;
+        }
+
+        .game-image img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* preserve aspect ratio */
+            transition: transform 0.25s ease;
+            display: block;      /* allow margin auto centering */
+            margin: 0 auto;      /* center horizontally inside the card */
+        }
+
+        .game-image img:hover {
+            transform: scale(1.05); /* zoom without shifting */
+        }
+
+        /* Base styles for all game images */
+        .game-image img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.25s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .game-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Specific logo size and position adjustments */
+        .game-image img.logo--eggvr {
+            /* translate(X, Y) - X: positive=right, negative=left; Y: positive=down, negative=up */
+            /* scale(size) - adjust size of the logo */
+            transform: translate(0px, 0px) scale(1);
+        }
+
+        .game-image img.logo--digigods {
+            transform: translate(0px, 0px) scale(0.9);
+        }
+
+        .game-image img.logo--digigods:hover {
+            transform: translate(0px, 0px) scale(0.95);
+        }
+
+        .game-image img.logo--tinyplanets {
+            transform: translate(0px, 0px) scale(0.85);
+        }
+
+        .game-image img.logo--tinyplanets:hover {
+            transform: translate(0px, 0px) scale(0.9);
+        }
+
+        .game-image img.logo--eggvr:hover {
+            /* Keep the same position (translate) but increase scale slightly */
+            transform: translate(0px, 0px) scale(0.75);
+        }
+
+        .game-image img.logo--animalblocks {
+            /* Example with a slight adjustment: moved 10px right and 5px up */
+            transform: translate(10px, 12px) scale(1.1);
+        }
+
+        .game-image img.logo--animalblocks:hover {
+            /* Keep the same position but increase scale slightly */
+            transform: translate(10px, -5px) scale(0.95);
         }
 
         .game-info {
@@ -712,7 +781,7 @@
         <div class="games-container" id="gamesContainer">
             <!-- Game Card 1 -->
             <div class="game-card" onclick="openModal('game1')">
-                <div class="game-image">🎮</div>
+                <div class="game-image"><img src="Images/01_EggVRLogo.png" alt="Egg VR Logo" class="logo--eggvr"></div>
                 <div class="game-info">
                     <div class="game-title">Egg VR </div>
                     <div class="game-role">Product Specialist / Composer / Sound Designer | Unity</div>
@@ -721,25 +790,29 @@
 
             <!-- Game Card 2 -->
             <div class="game-card" onclick="openModal('game2')">
-                <div class="game-image">🏰</div>
+                <div class="game-image"><img src="Images/animalblocks_splash_3.png" alt="Animal Blocks Logo" class="logo--animalblocks"></div>
                 <div class="game-info">
-                    <div class="game-title">Kingdom Quest</div>
-                    <div class="game-role">Game Designer | Unreal</div>
+                    <div class="game-title">Animal Blocks</div>
+                    <div class="game-role">Product Specialist / Community Manager</div>
                 </div>
             </div>
 
             <!-- Game Card 3 -->
             <div class="game-card" onclick="openModal('game3')">
-                <div class="game-image">🏎️</div>
+                <div class="game-image">
+                    <img class="logo--digigods" src="Images/DigiGods logo.png" alt="DigiGods Logo">
+                </div>
                 <div class="game-info">
-                    <div class="game-title">Turbo Racers</div>
-                    <div class="game-role">Gameplay Programmer</div>
+                    <div class="game-title">DigiGods</div>
+                    <div class="game-role">Product Specialist / Community Manager</div>
                 </div>
             </div>
 
             <!-- Game Card 4 -->
             <div class="game-card" onclick="openModal('game4')">
-                <div class="game-image">🧙</div>
+                <div class="game-image">
+                    <img class="logo--tinyplanets" src="Images/title png.png" alt="Tiny Planets Logo">
+                </div>
                 <div class="game-info">
                     <div class="game-title">Tiny Planets</div>
                     <div class="game-role">Composer/Sound Designer | Unity</div>
@@ -812,9 +885,9 @@
                     <div class="skill-icon">🔧</div>
                     <div class="skill-name">Unreal Engine</div>
                 </div>
-                <div class="skill-card" onclick="showPopup(this, 'Specialized in mobile game development with expertise in touch controls, performance optimization, and cross-platform compatibility.')">
-                    <div class="skill-icon">📱</div>
-                    <div class="skill-name">Mobile Dev</div>
+                <div class="skill-card" onclick="showPopup(this, 'Professional drummer with over 8 years of experience performing in various genres. Skilled in studio recording, live performance, and rhythm composition. Have recorded multiple singles and an album.')">
+                    <div class="skill-icon">🥁</div>
+                    <div class="skill-name">Professional Drummer</div>
                 </div>
                 <div class="skill-card" onclick="showPopup(this, 'Experience in game audio design including sound effects, music integration, and spatial audio implementation using various audio middleware.')">
                     <div class="skill-icon">🎵</div>
